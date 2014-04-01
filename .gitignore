@@ -6,3 +6,4 @@ test/dummy/tmp/**
 .ruby-gemset
 .ruby-version
 coverage/**
+gemfile.lock
