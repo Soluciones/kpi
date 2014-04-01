@@ -11,6 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20140401123601) do
+
+  create_table "kpi_semanales", :force => true do |t|
+    t.integer  "anyo"
+    t.integer  "semana"
+    t.string   "modelo"
+    t.string   "scope"
+    t.integer  "dato"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "kpi_semanales", ["anyo", "semana"], :name => "index_kpi_semanales_on_anyo_and_semana"
+  add_index "kpi_semanales", ["modelo", "scope", "anyo", "semana"], :name => "index_kpi_semanales_on_modelo_and_scope_and_anyo_and_semana", :unique => true
 
 end
