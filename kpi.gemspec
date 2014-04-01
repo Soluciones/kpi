@@ -7,11 +7,11 @@ require "kpi/version"
 Gem::Specification.new do |s|
   s.name        = "kpi"
   s.version     = Kpi::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Kpi."
-  s.description = "TODO: Description of Kpi."
+  s.authors     = ["Fernan2 - Rankia"]
+  s.email       = ["fernando@rankia.com"]
+  s.homepage    = "https://github.com/Soluciones/kpi"
+  s.summary     = "Guarda datos de Key Performance Indicators y las muestra"
+  s.description = ""
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
