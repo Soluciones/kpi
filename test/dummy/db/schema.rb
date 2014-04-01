@@ -26,4 +26,11 @@ ActiveRecord::Schema.define(:version => 20140401123601) do
   add_index "kpi_semanales", ["anyo", "semana"], :name => "index_kpi_semanales_on_anyo_and_semana"
   add_index "kpi_semanales", ["modelo", "scope", "anyo", "semana"], :name => "index_kpi_semanales_on_modelo_and_scope_and_anyo_and_semana", :unique => true
 
+  create_table "usuarios", :force => true do |t|
+    t.string   "nick"
+    t.string   "estado_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
 end
