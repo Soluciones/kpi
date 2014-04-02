@@ -1,1 +1,15 @@
-It works!
+%h1 Seguimiento semanal de la evolución de usuarios, autores y contenidos
+
+- Kpi::CONFIGURACION.each_key do |bloque|
+  %h3= bloque
+
+  %table.ranking
+    %tr
+      %th
+      - @semanas.reverse_each do |semana|
+        %th Semana #{ semana }
+    - Kpi::CONFIGURACION[bloque].each do |fila|
+      %tr
+        %td= fila[:texto]
+        - @semanas.reverse_each do |semana|
+          %td.center= @kpi_semanales.select { |kpi| (kpi.semana == semana) && (kpi.modelo == fila[:modelo]) && (kpi.scope == fila[:scope]) }.first.try(:dato)
