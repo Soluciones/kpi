@@ -14,8 +14,8 @@ module Kpi::Usuario
   module UsuariosScopes
     def scopes_usuario
       scope :todos, -> { nil }
-      scope :activados, -> { where("estado_id > 0") }
-      scope :sin_activar, -> { where(estado_id: 0) }
+      scope :activados, -> { where("estado_id > #{ ::Kpi::Personalizacion.estado_usuario_sin_activar }") }
+      scope :sin_activar, -> { where(estado_id: ::Kpi::Personalizacion.estado_usuario_sin_activar) }
     end
   end
 end
