@@ -7,7 +7,7 @@ module Kpi::Comun
 
   module ComunScopes
     def scopes_comunes
-      scope :ultima_semana, -> { where(created_at: (Date.today - 7.days)..Date.today) }
+      scope :ultima_semana, -> { where(created_at: 7.days.ago.to_date..Time.now.to_date) }
     end
   end
 end
