@@ -10,8 +10,10 @@ module Kpi::Usuario
     extend ComunScopes
     scopes_comunes
 
+    ESTADO_USUARIO_SIN_ACTIVAR = 0
+
     scope :todos, -> { nil }
-    scope :activados, -> { where("estado_id > #{ ::Kpi::Personalizacion.estado_usuario_sin_activar }") }
-    scope :sin_activar, -> { where(estado_id: ::Kpi::Personalizacion.estado_usuario_sin_activar) }
+    scope :activados, -> { where("estado_id > #{ ESTADO_USUARIO_SIN_ACTIVAR }") }
+    scope :sin_activar, -> { where(estado_id: ESTADO_USUARIO_SIN_ACTIVAR) }
   end
 end
