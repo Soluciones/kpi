@@ -2,7 +2,7 @@
 
 require 'active_support/concern'
 
-module Kpi::Usuario
+module Kpi::UsuarioKpi
   include Kpi::Comun
   extend ActiveSupport::Concern
 
