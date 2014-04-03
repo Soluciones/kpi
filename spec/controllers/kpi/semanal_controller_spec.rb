@@ -6,21 +6,6 @@ module Kpi
   describe SemanalController do
     describe "#index" do
 
-      describe "debe calcular las últimas 5 semanas contando desde ayer" do
-        # Del 3 al 10 de marzo era la semana 10
-
-        it "si hoy es lunes, empieza por la semana pasada hacia atrás" do
-          Time.stub(now: '2014-03-03 11:25'.to_datetime)
-          get :index, { use_route: :kpi }
-          assigns(:semanas).should == (5..9)
-        end
-
-        it "si hoy es martes, empieza por la semana actual hacia atrás" do
-          Time.stub(now: '2014-03-04 11:25'.to_datetime)
-          get :index, { use_route: :kpi }
-          assigns(:semanas).should == (6..10)
-        end
-      end
 
       describe "debe devolver los KPI que tocan" do
         let!(:dato_semanal_nuevo) { FactoryGirl.create(:semanal, anyo: 2014, semana: 10)}
