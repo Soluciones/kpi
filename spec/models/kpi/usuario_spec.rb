@@ -4,9 +4,9 @@ require 'spec_helper'
 
 describe Usuario do
   describe "scopes" do
-    let!(:activado) { Usuario.create(nick: 'Poldo', estado_id: 1, created_at: 2.days.ago) }
-    let!(:sin_activar) { Usuario.create(nick: 'Waldo', estado_id: 0, created_at: 2.days.ago) }
-    let!(:antiguo) { Usuario.create(nick: 'Fer', estado_id: 1, created_at: 2.years.ago) }
+    let!(:activado) { FactoryGirl.create(:usuario, estado_id: 1, created_at: 2.days.ago) }
+    let!(:sin_activar) { FactoryGirl.create(:usuario, estado_id: 0, created_at: 2.days.ago) }
+    let!(:antiguo) { FactoryGirl.create(:usuario, estado_id: 1, created_at: 2.years.ago) }
 
     context "en la última semana" do
       it "filtra los activados" do

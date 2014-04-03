@@ -23,10 +23,10 @@ module Kpi
       end
 
       describe "debe devolver los KPI que tocan" do
-        let!(:dato_semanal_nuevo) { Semanal.create(anyo: 2014, semana: 10)}
-        let!(:dato_semanal_antiguo_pero_en_rango) { Semanal.create(anyo: 2014, semana: 6)}
-        let!(:dato_semanal_demasiado_antiguo) { Semanal.create(anyo: 2014, semana: 5)}
-        let!(:dato_semanal_del_anyo_pasado) { Semanal.create(anyo: 2013, semana: 10)}
+        let!(:dato_semanal_nuevo) { FactoryGirl.create(:semanal, anyo: 2014, semana: 10)}
+        let!(:dato_semanal_antiguo_pero_en_rango) { FactoryGirl.create(:semanal, anyo: 2014, semana: 6)}
+        let!(:dato_semanal_demasiado_antiguo) { FactoryGirl.create(:semanal, anyo: 2014, semana: 5)}
+        let!(:dato_semanal_del_anyo_pasado) { FactoryGirl.create(:semanal, anyo: 2013, semana: 10)}
 
         it "devuelve los de las últimas 5 semanas" do
           Time.stub(now: '2014-03-04 11:25'.to_datetime)
