@@ -44,7 +44,5 @@ describe Usuario do
         Usuario.todos.count.should == 3
       end
     end
-
   end
-
 end
