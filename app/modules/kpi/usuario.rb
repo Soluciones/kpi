@@ -9,13 +9,9 @@ module Kpi::Usuario
   included do
     extend ComunScopes
     scopes_comunes
-  end
 
-  module UsuariosScopes
-    def scopes_usuario
-      scope :todos, -> { nil }
-      scope :activados, -> { where("estado_id > #{ ::Kpi::Personalizacion.estado_usuario_sin_activar }") }
-      scope :sin_activar, -> { where(estado_id: ::Kpi::Personalizacion.estado_usuario_sin_activar) }
-    end
+    scope :todos, -> { nil }
+    scope :activados, -> { where("estado_id > #{ ::Kpi::Personalizacion.estado_usuario_sin_activar }") }
+    scope :sin_activar, -> { where(estado_id: ::Kpi::Personalizacion.estado_usuario_sin_activar) }
   end
 end
