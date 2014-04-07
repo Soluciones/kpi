@@ -1,5 +1,9 @@
 # Engine kpi
 
+## Lanzar a mano el cálculo de la última semana:
+
+    > Kpi::Semanal.calcula_ultima_semana
+
 ## Migraciones
 
 Una migración no funciona si se lanza en el root del engine:
@@ -29,14 +33,21 @@ Luego, habrá que importar las migraciones a la app principal que vaya a usar el
 
 ## Conexión app-engine
 
-### En el engine:
-
-`lib/kpi`: Aquí metemos las clases externas con las que vamos a interactuar. La clase estará disponible como `xxx_class`
-
-
 ### En la app:
 
-`config/initializers/engines.rb`: Aquí se le pasan las clases externas que el engine necesita, en formato `Kpi::Clases.xxx_extern = 'Xxx'`
+En usuario.rb, se añaden los scopes que el modelo proporciona con una línea:
+`  include Kpi::UsuarioKpi`
+
+Y lo mismo para el resto de modelos afectados.
+Puede consultarse con un comando todos los modelos a los que se les va a añadir scopes:
+
+    > Kpi::MODELOS_AFECTADOS
+
+
+### En el engine:
+
+Dummy necesitará tener creados los modelos afectados, con sus correspondientes tablas
+
 
 ### Configurar para que use la working copy local
 
