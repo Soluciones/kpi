@@ -20,5 +20,6 @@ module Kpi
     ]
   }
 
-  MODELOS_AFECTADOS = CONFIGURACION.values.flatten.map{|p| p[:modelo]}.uniq
+  MODELOS_Y_SCOPES = CONFIGURACION.values.flatten
+  MODELOS_AFECTADOS = MODELOS_Y_SCOPES.map{|p| p[:modelo]}.uniq
 end
