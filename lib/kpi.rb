@@ -18,7 +18,7 @@ module Kpi
       { texto: 'Usuarios Activados en la semana', modelo: USUARIO, scopes: [:activados, :ultima_semana] },
       { texto: 'Usuarios sin Activar en la semana', modelo: USUARIO, scopes: [:sin_activar, :ultima_semana] }
     ],
-    'Contenidos totales' => [
+    'Contenidos en la semana (todos los tipos)' => [
       { texto: 'Contenidos publicados por usuarios Moderadores', modelo: CONTENIDO, scope: [:autor_moderador, :ultima_semana] }
     ]
   }
