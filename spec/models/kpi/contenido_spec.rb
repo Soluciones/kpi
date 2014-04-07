@@ -11,9 +11,9 @@ describe Contenido do
       end
     end
     let!(:un_guru_externo) do
-      FactoryGirl.create(:usuario, estado_id: Usuario::ESTADO_USUARIO_NORMAL) do |guru_externo|
-        Tematica::Tematizacion.create!(tematizable_id: guru_externo.id, tematizable_type: 'Usuario', tematizable_grupo: Usuario::EXPERTO, tematica_id: 2)
-        FactoryGirl.create_list(:contenido, 3, created_at: 2.days.ago, usuario_id: guru_externo.id)
+      FactoryGirl.create(:usuario, estado_id: Usuario::ESTADO_USUARIO_NORMAL) do |usuario|
+        FactoryGirl.create(:tematizacion_usuario_experto, tematizable_id: usuario.id)
+        FactoryGirl.create_list(:contenido, 3, created_at: 2.days.ago, usuario_id: usuario.id)
       end
     end
     let!(:un_forero) do
