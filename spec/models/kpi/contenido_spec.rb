@@ -11,8 +11,9 @@ describe Contenido do
       end
     end
     let!(:un_guru_externo) do
-      FactoryGirl.create(:usuario, estado_id: Usuario::ESTADO_USUARIO_NORMAL) do |usuario|
-        FactoryGirl.create_list(:contenido, 3, created_at: 2.days.ago, usuario: usuario)
+      FactoryGirl.create(:usuario, estado_id: Usuario::ESTADO_USUARIO_NORMAL) do |guru_externo|
+        Tematica::Tematizacion.create!(tematizable_id: guru_externo.id, tematizable_type: 'Usuario', tematizable_grupo: Usuario::EXPERTO, tematica_id: 2)
+        FactoryGirl.create_list(:contenido, 3, created_at: 2.days.ago, usuario_id: guru_externo.id)
       end
     end
     let!(:un_forero) do
@@ -40,6 +41,12 @@ describe Contenido do
         mensajes = Contenido.autor_moderador
         mensajes.should have(2).mensajes
         mensajes.map(&:usuario_id).uniq.should == [nuestro_guru.id]
+      end
+
+      it "filtra los mensajes de expertos" do
+        mensajes = Contenido.autor_experto.all
+        mensajes.should have(3).mensajes
+        mensajes.map(&:usuario_id).uniq.should == [un_guru_externo.id]
       end
     end
   end

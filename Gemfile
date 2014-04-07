@@ -7,6 +7,8 @@ gemspec
 
 gem 'haml-rails'
 
+gem 'tematica', git: 'git@github.com:Soluciones/tematica.git', branch: 'master', tag: '0.0.2'
+
 # jquery-rails is used by the dummy application
 # gem "jquery-rails"
 

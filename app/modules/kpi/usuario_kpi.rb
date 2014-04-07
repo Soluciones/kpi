@@ -13,6 +13,7 @@ module Kpi::UsuarioKpi
     ESTADO_USUARIO_SIN_ACTIVAR = 0
     ESTADO_USUARIO_NORMAL = 1
     ESTADO_USUARIO_ADMIN = 3
+    EXPERTO = 'Experto'
 
     scope :todos, -> { nil }
     scope :activados, -> { where("estado_id > #{ ESTADO_USUARIO_SIN_ACTIVAR }") }

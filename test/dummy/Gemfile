@@ -7,6 +7,8 @@ ruby '1.9.3'
 gem 'rails', '3.1.12'   # Si se cambia -> bundle update rails
 gem 'mysql2'
 
+gem 'tematica', git: 'git@github.com:Soluciones/tematica.git', branch: 'master', tag: '0.0.2'
+
 gem 'haml-rails'
 group :assets do
   gem 'sass-rails', " ~> 3.1.0"
