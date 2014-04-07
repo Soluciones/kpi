@@ -5,7 +5,7 @@ require 'spec_helper'
 describe Kpi::Semanal do
   describe ".dame_ultimas_n_semanas" do
     let(:n_semanas) { Random.rand(2..10) }
-    let(:semana_actual) { Random.rand(n_semanas..53) }
+    let(:semana_actual) { Random.rand(n_semanas..52) }
     let(:semana_pasada) { semana_actual - 1 }
     let(:lunes) { Date.commercial(Time.now.year, semana_actual, 1).to_datetime }
     let(:martes) { lunes + 1.day }
