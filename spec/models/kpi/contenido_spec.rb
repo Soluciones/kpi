@@ -6,6 +6,7 @@ describe Contenido do
   describe "scopes" do
     let!(:nuestro_guru) do
       FactoryGirl.create(:usuario, estado_id: Usuario::ESTADO_USUARIO_ADMIN) do |usuario|
+        FactoryGirl.create(:tematizacion_usuario_experto, tematizable_id: usuario.id)
         FactoryGirl.create(:contenido, created_at: 2.days.ago, usuario: usuario)
         FactoryGirl.create(:contenido, created_at: 2.years.ago, usuario: usuario)
       end
@@ -31,8 +32,14 @@ describe Contenido do
 
       it "filtra los mensajes de no moderador" do
         mensajes = Contenido.autor_no_moderador.ultima_semana
-        mensajes.should have(5).mensaje
+        mensajes.should have(5).mensajes
         mensajes.map(&:usuario_id).should_not include(nuestro_guru.id)
+      end
+
+      it "filtra los mensajes de usuarios normales (No Admin ni Experto)" do
+        mensajes = Contenido.autor_ni_moderador_ni_experto.ultima_semana
+        mensajes.should have(2).mensajes
+        mensajes.map(&:usuario_id).uniq.should == [un_forero.id]
       end
     end
 

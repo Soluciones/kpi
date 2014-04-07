@@ -20,7 +20,9 @@ module Kpi
     ],
     'Contenidos en la semana (todos los tipos)' => [
       { texto: 'Contenidos publicados por usuarios Moderadores', modelo: CONTENIDO, scope: [:autor_moderador, :ultima_semana] },
-      { texto: 'Contenidos publicados por usuarios Expertos', modelo: CONTENIDO, scope: [:autor_experto, :ultima_semana] }
+      { texto: 'Contenidos publicados por usuarios Expertos', modelo: CONTENIDO, scope: [:autor_experto, :ultima_semana] },
+      { texto: 'Contenidos publicados por usuarios Normales', modelo: CONTENIDO, scope: [:autor_ni_moderador_ni_experto, :ultima_semana] },
+      { texto: 'TOTAL CONTENIDOS SEMANALES', modelo: CONTENIDO, scope: [:ultima_semana] }
     ]
   }
 
