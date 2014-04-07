@@ -26,7 +26,7 @@ module Kpi
       q
     end
 
-    def dia_de_referencia
+    def self.dia_de_referencia
       Date.yesterday
     end
   end
