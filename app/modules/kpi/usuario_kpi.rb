@@ -11,6 +11,7 @@ module Kpi::UsuarioKpi
     scopes_comunes
 
     ESTADO_USUARIO_SIN_ACTIVAR = 0
+    ESTADO_USUARIO_ADMIN = 3
 
     scope :todos, -> { nil }
     scope :activados, -> { where("estado_id > #{ ESTADO_USUARIO_SIN_ACTIVAR }") }
