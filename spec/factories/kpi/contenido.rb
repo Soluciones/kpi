@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :contenido, class: 'Contenido' do
     association     :usuario
-    subtipo_id      { (1..10).to_a.sample }
+    subtipo_id      { Random.rand(1..10) }
     publicado       true
     tema            { |c| c.subtipo_id }
     titulo          { Faker::Lorem.sentence }
