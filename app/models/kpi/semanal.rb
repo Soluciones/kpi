@@ -17,9 +17,15 @@ module Kpi
       self.where(anyo: Date.yesterday.year, semana: ultima_semana).delete_all
       modelos_y_scopes = Kpi::CONFIGURACION.values.flatten
       modelos_y_scopes.each do |modelo_y_scope|
-        dato = eval("#{ modelo_y_scope[:modelo] }.#{ modelo_y_scope[:scope] }.count")
-        self.create(anyo: Date.yesterday.year, semana: ultima_semana, modelo: modelo_y_scope[:modelo], scope: modelo_y_scope[:scope], dato: dato)
+        dato = encadena_modelo_y_scopes(modelo_y_scope).count
+        self.create(anyo: Date.yesterday.year, semana: ultima_semana, modelo: modelo_y_scope[:modelo], scope: modelo_y_scope[:scopes].to_s, dato: dato)
       end
+    end
+
+    def self.encadena_modelo_y_scopes(modelo_y_scope)
+      q = modelo_y_scope[:modelo].constantize
+      modelo_y_scope[:scopes].each { |scope| q = q.send(scope) }
+      q
     end
   end
 end
