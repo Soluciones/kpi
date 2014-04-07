@@ -32,13 +32,18 @@ describe Kpi::Semanal do
   end
 
   describe ".calcula_ultima_semana" do
-    before { stub_const("Kpi::CONFIGURACION", { 'Total usuarios' => [
+    let(:config) { { 'Total usuarios' => [
       { texto: 'Usuarios Activados', modelo: Kpi::USUARIO, scopes: [:activados] },
       { texto: 'Usuarios sin Activar', modelo: Kpi::USUARIO, scopes: [:sin_activar] }
       ],
       'Aumento de usuarios en la semana' => [
         { texto: 'Usuarios sin Activar en la semana', modelo: Kpi::USUARIO, scopes: [:sin_activar, :ultima_semana] }
-      ]}) }
+      ]} }
+
+    before do
+      stub_const("Kpi::CONFIGURACION", config)
+      stub_const("Kpi::MODELOS_Y_SCOPES", config.values.flatten)
+    end
 
     it "debe buscar los datos y guardarlos" do
       Usuario.stub_chain(:activados, :count).and_return(22)
