@@ -12,6 +12,9 @@ module Kpi::ContenidoKpi
 
     belongs_to :usuario
 
-    scope :autor_moderador, -> { joins(:usuario).where('usuarios.estado_id >= ?', Usuario::ESTADO_USUARIO_ADMIN) }
+    scope :autor_admin, -> { where(usuario_id: Usuario.ids_de_admins) }
+    scope :autor_no_admin, -> { where('usuario_id NOT IN (?)', Usuario.ids_de_admins) }
+    scope :autor_experto, -> { autor_no_admin.where(usuario_id: Usuario.ids_de_expertos) }
+    scope :autor_ni_admin_ni_experto, -> { autor_no_admin.where("usuario_id NOT IN (?)", Usuario.ids_de_expertos) }
   end
 end

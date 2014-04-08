@@ -36,6 +36,19 @@ ActiveRecord::Schema.define(:version => 20140407081316) do
   add_index "kpi_semanales", ["anyo", "semana"], :name => "index_kpi_semanales_on_anyo_and_semana"
   add_index "kpi_semanales", ["modelo", "scope", "anyo", "semana"], :name => "index_kpi_semanales_on_modelo_and_scope_and_anyo_and_semana", :unique => true
 
+  create_table "tematica_tematizaciones", :force => true do |t|
+    t.integer  "tematizable_id",                    :null => false
+    t.string   "tematizable_type",                  :null => false
+    t.string   "tematizable_grupo", :default => "", :null => false
+    t.integer  "tematica_id",                       :null => false
+    t.boolean  "explicita"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tematica_tematizaciones", ["tematica_id", "tematizable_type", "tematizable_grupo", "tematizable_id"], :name => "ix_tematizaciones_by_tematica_and_type_grupo", :unique => true
+  add_index "tematica_tematizaciones", ["tematizable_type", "tematizable_id"], :name => "ix_tematizaciones_by_tematizable"
+
   create_table "usuarios", :force => true do |t|
     t.string   "nick"
     t.string   "estado_id"

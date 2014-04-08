@@ -13,9 +13,18 @@ module Kpi::UsuarioKpi
     ESTADO_USUARIO_SIN_ACTIVAR = 0
     ESTADO_USUARIO_NORMAL = 1
     ESTADO_USUARIO_ADMIN = 3
+    EXPERTO = 'Experto'
 
     scope :todos, -> { nil }
     scope :activados, -> { where("estado_id > #{ ESTADO_USUARIO_SIN_ACTIVAR }") }
     scope :sin_activar, -> { where(estado_id: ESTADO_USUARIO_SIN_ACTIVAR) }
+
+    def self.ids_de_expertos
+      Tematica::Tematizacion.where(tematizable_type: 'Usuario', tematizable_grupo: EXPERTO).pluck(:tematizable_id)
+    end
+
+    def self.ids_de_admins
+      self.where('estado_id >= ?', Usuario::ESTADO_USUARIO_ADMIN).pluck(:id)
+    end
   end
 end
