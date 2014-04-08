@@ -20,9 +20,11 @@ module Kpi::UsuarioKpi
     scope :sin_activar, -> { where(estado_id: ESTADO_USUARIO_SIN_ACTIVAR) }
 
     def self.ids_de_expertos
-      ActiveRecord::Base.connection.select_values("SELECT tt.tematizable_id
-                                                     FROM tematica_tematizaciones tt
-                                                    WHERE tt.tematizable_type = 'Usuario' and tt.tematizable_grupo = '#{EXPERTO}'")
+      Tematica::Tematizacion.where(tematizable_type: 'Usuario', tematizable_grupo: EXPERTO).pluck(:tematizable_id)
+    end
+
+    def self.ids_de_admins
+      self.where('estado_id >= ?', Usuario::ESTADO_USUARIO_ADMIN).pluck(:id)
     end
   end
 end
