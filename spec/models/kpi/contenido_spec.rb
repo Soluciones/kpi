@@ -24,28 +24,28 @@ describe Contenido do
     end
 
     context "en la última semana" do
-      it "filtra los mensajes de moderador" do
-        mensajes = Contenido.autor_moderador.ultima_semana
+      it "filtra los mensajes de admin" do
+        mensajes = Contenido.autor_admin.ultima_semana
         mensajes.should have(1).mensaje
         mensajes.map(&:usuario_id).should == [nuestro_guru.id]
       end
 
-      it "filtra los mensajes de no moderador" do
-        mensajes = Contenido.autor_no_moderador.ultima_semana
+      it "filtra los mensajes de no admin" do
+        mensajes = Contenido.autor_no_admin.ultima_semana
         mensajes.should have(5).mensajes
         mensajes.map(&:usuario_id).should_not include(nuestro_guru.id)
       end
 
       it "filtra los mensajes de usuarios normales (No Admin ni Experto)" do
-        mensajes = Contenido.autor_ni_moderador_ni_experto.ultima_semana
+        mensajes = Contenido.autor_ni_admin_ni_experto.ultima_semana
         mensajes.should have(2).mensajes
         mensajes.map(&:usuario_id).uniq.should == [un_forero.id]
       end
     end
 
     context "totales" do
-      it "filtra los mensajes de moderador" do
-        mensajes = Contenido.autor_moderador
+      it "filtra los mensajes de admin" do
+        mensajes = Contenido.autor_admin
         mensajes.should have(2).mensajes
         mensajes.map(&:usuario_id).uniq.should == [nuestro_guru.id]
       end
