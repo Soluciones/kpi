@@ -41,6 +41,10 @@ describe Contenido do
         mensajes.should have(2).mensajes
         mensajes.map(&:usuario_id).uniq.should == [un_forero.id]
       end
+
+      it "cuenta el total de autores" do
+        ::Kpi::Clases.contenido_extern.constantize.autores.ultima_semana.count.should == 3
+      end
     end
 
     context "totales" do

@@ -12,6 +12,7 @@ module Kpi::ContenidoKpi
 
     belongs_to :usuario, class_name: ::Kpi::Clases.usuario_extern
 
+    scope :autores, -> { select('DISTINCT usuario_id') }
     scope :autor_admin, -> { where(usuario_id: ::Kpi::Clases.usuario_extern.constantize.ids_de_admins) }
     scope :autor_no_admin, -> { where('usuario_id NOT IN (?)', ::Kpi::Clases.usuario_extern.constantize.ids_de_admins) }
     scope :autor_experto, -> { autor_no_admin.where(usuario_id: ::Kpi::Clases.usuario_extern.constantize.ids_de_expertos) }
