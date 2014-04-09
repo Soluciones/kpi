@@ -50,7 +50,7 @@ Puede consultarse con un comando todos los modelos a los que se les va a añadir
 
 Dummy necesitará tener creados los modelos afectados, con sus correspondientes tablas
 
-`lib/kpi`: Aquí metemos las clases externas con las que vamos a interactuar.
+`lib/kpi.rb`: Aquí metemos las clases externas con las que vamos a interactuar.
 En las clases y tests que lleven un `include Kpi::Clases`, la clase estará disponible como `xxx_class`; para el resto, con `::Kpi::Clases.xxx_extern.constantize` (y su nombre, con `::Kpi::Clases.xxx_extern`)
 
 
