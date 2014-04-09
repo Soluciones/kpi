@@ -6,5 +6,5 @@ test/dummy/tmp/**
 .ruby-gemset
 .ruby-version
 coverage/**
-gemfile.lock
+Gemfile.lock
 test/dummy/.sass-cache/**
