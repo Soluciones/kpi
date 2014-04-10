@@ -5,20 +5,18 @@ require 'spec_helper'
 describe Contenido do
   describe "scopes de autores y tipos de autor" do
     let!(:nuestro_guru) do
-      FactoryGirl.create(:usuario, estado_id: ::Kpi::Clases.usuario_extern.constantize::ESTADO_USUARIO_ADMIN) do |usuario|
-        FactoryGirl.create(:tematizacion_usuario_experto, tematizable_id: usuario.id)
+      FactoryGirl.create(:usuario_admin) do |usuario|
         FactoryGirl.create(:contenido, created_at: 2.days.ago, usuario: usuario)
         FactoryGirl.create(:contenido, created_at: 2.years.ago, usuario: usuario)
       end
     end
     let!(:un_guru_externo) do
-      FactoryGirl.create(:usuario, estado_id: ::Kpi::Clases.usuario_extern.constantize::ESTADO_USUARIO_NORMAL) do |usuario|
-        FactoryGirl.create(:tematizacion_usuario_experto, tematizable_id: usuario.id)
+      FactoryGirl.create(:usuario_experto) do |usuario|
         FactoryGirl.create_list(:contenido, 3, created_at: 2.days.ago, usuario_id: usuario.id)
       end
     end
     let!(:un_forero) do
-      FactoryGirl.create(:usuario, estado_id: ::Kpi::Clases.usuario_extern.constantize::ESTADO_USUARIO_NORMAL) do |usuario|
+      FactoryGirl.create(:usuario_normal) do |usuario|
         FactoryGirl.create_list(:contenido, 2, created_at: 2.days.ago, usuario: usuario)
       end
     end
@@ -65,13 +63,13 @@ describe Contenido do
   describe "scopes de tipos de contenido" do
     context "filtra los mensajes de foros" do
       let!(:nuestro_guru) do
-        FactoryGirl.create(:usuario, estado_id: ::Kpi::Clases.usuario_extern.constantize::ESTADO_USUARIO_ADMIN) do |usuario|
+        FactoryGirl.create(:usuario_admin) do |usuario|
           FactoryGirl.create(:respuesta_con_hilo, created_at: 2.days.ago, usuario: usuario)
           FactoryGirl.create(:post, created_at: 2.days.ago, usuario: usuario)
         end
       end
       let!(:un_forero) do
-        FactoryGirl.create(:usuario, estado_id: ::Kpi::Clases.usuario_extern.constantize::ESTADO_USUARIO_NORMAL) do |usuario|
+        FactoryGirl.create(:usuario_normal) do |usuario|
           FactoryGirl.create(:hilo, created_at: 1.year.ago, usuario: usuario)
           FactoryGirl.create(:respuesta_con_hilo, created_at: 2.days.ago, usuario: usuario)
         end
@@ -98,14 +96,13 @@ describe Contenido do
 
     context "filtra los mensajes de blogs" do
       let!(:nuestro_guru) do
-        FactoryGirl.create(:usuario, estado_id: ::Kpi::Clases.usuario_extern.constantize::ESTADO_USUARIO_ADMIN) do |usuario|
+        FactoryGirl.create(:usuario_admin) do |usuario|
           FactoryGirl.create(:hilo, created_at: 2.days.ago, usuario: usuario)
           FactoryGirl.create(:comentario_con_post, created_at: 2.days.ago, usuario: usuario)
         end
       end
       let!(:un_guru_externo) do
-        FactoryGirl.create(:usuario, estado_id: ::Kpi::Clases.usuario_extern.constantize::ESTADO_USUARIO_NORMAL) do |usuario|
-          FactoryGirl.create(:tematizacion_usuario_experto, tematizable_id: usuario.id)
+        FactoryGirl.create(:usuario_experto) do |usuario|
           FactoryGirl.create(:post, created_at: 1.year.ago, usuario: usuario)
           FactoryGirl.create(:comentario_con_post, created_at: 2.days.ago, usuario: usuario)
         end
