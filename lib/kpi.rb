@@ -28,6 +28,23 @@ module Kpi
         { texto: 'Contenidos publicados por usuarios Expertos', modelo: ::Kpi::Clases.contenido_extern, scopes: [:autor_experto, :ultima_semana] },
         { texto: 'Contenidos publicados por usuarios Normales', modelo: ::Kpi::Clases.contenido_extern, scopes: [:autor_ni_admin_ni_experto, :ultima_semana] },
         { texto: 'TOTAL CONTENIDOS SEMANALES', modelo: ::Kpi::Clases.contenido_extern, scopes: [:ultima_semana] }
+      ],
+      'Foros' => [
+        { texto: 'Hilos publicados por usuarios Moderadores', modelo: ::Kpi::Clases.contenido_extern, scopes: [:autor_admin, :ultima_semana, :hilos] },
+        { texto: 'Mensajes publicados por Moderadores', modelo: ::Kpi::Clases.contenido_extern, scopes: [:autor_admin, :ultima_semana, :respuestas] },
+        { texto: 'TOTAL Contenidos en foros por Moderadores', modelo: ::Kpi::Clases.contenido_extern, scopes: [:autor_admin, :ultima_semana, :en_foros] },
+        { texto: 'Hilos publicados por Expertos', modelo: ::Kpi::Clases.contenido_extern, scopes: [:autor_experto, :ultima_semana, :hilos] },
+        { texto: 'Mensajes publicados por Expertos', modelo: ::Kpi::Clases.contenido_extern, scopes: [:autor_experto, :ultima_semana, :respuestas] },
+        { texto: 'TOTAL Contenidos en foros por Expertos', modelo: ::Kpi::Clases.contenido_extern, scopes: [:autor_experto, :ultima_semana, :en_foros] },
+        { texto: 'Hilos publicados por Usuarios Normales', modelo: ::Kpi::Clases.contenido_extern, scopes: [:autor_ni_admin_ni_experto, :ultima_semana, :hilos] },
+        { texto: 'Mensajes publicados por Usuarios Normales', modelo: ::Kpi::Clases.contenido_extern, scopes: [:autor_ni_admin_ni_experto, :ultima_semana, :respuestas] },
+        { texto: 'TOTAL Contenidos en foros por Usuarios Normales', modelo: ::Kpi::Clases.contenido_extern, scopes: [:autor_ni_admin_ni_experto, :ultima_semana, :en_foros] },
+        { texto: 'TOTAL CONTENIDOS EN FOROS', modelo: ::Kpi::Clases.contenido_extern, scopes: [:ultima_semana, :en_foros] }
+      ],
+      'Blogs' => [
+        { texto: 'Posts publicados por Moderadores', modelo: ::Kpi::Clases.contenido_extern, scopes: [:autor_admin, :ultima_semana, :posts] },
+        { texto: 'Comentarios de post publicados por Moderadores', modelo: ::Kpi::Clases.contenido_extern, scopes: [:autor_admin, :ultima_semana, :comentarios_a_posts] },
+        { texto: 'TOTAL CONTENIDOS EN BLOGS', modelo: ::Kpi::Clases.contenido_extern, scopes: [:autor_admin, :ultima_semana, :en_blogs] }
       ]
     }
   end
