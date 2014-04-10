@@ -49,4 +49,8 @@ module Kpi
       end
     end
   end
+
+  module Personalizacion
+    mattr_accessor :array_foros
+  end
 end
