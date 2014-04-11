@@ -16,6 +16,13 @@ module Kpi
         { texto: 'Usuarios Activados en la semana', modelo: ::Kpi::Clases.usuario_extern, scopes: [:activados, :ultima_semana] },
         { texto: 'Usuarios sin Activar en la semana', modelo: ::Kpi::Clases.usuario_extern, scopes: [:sin_activar, :ultima_semana] }
       ],
+      'Autores' => [
+        { texto: 'Autores Moderadores', modelo: ::Kpi::Clases.contenido_extern, scopes: [:autores, :autor_admin, :ultima_semana] },
+        { texto: 'Autores Expertos', modelo: ::Kpi::Clases.contenido_extern, scopes: [:autores, :autor_experto, :ultima_semana] },
+        { texto: 'Autores Normales', modelo: ::Kpi::Clases.contenido_extern, scopes: [:autores, :autor_ni_admin_ni_experto, :ultima_semana] },
+        { texto: 'TOTAL AUTORES SEMANALES', modelo: ::Kpi::Clases.contenido_extern, scopes: [:autores, :ultima_semana] },
+        { texto: 'Autores nuevos que publican primer contenido', modelo: ::Kpi::Clases.estadistica_extern, scopes: [:primera_participacion_del_usuario, :ultima_semana] }
+      ],
       'Contenidos en la semana (todos los tipos)' => [
         { texto: 'Contenidos publicados por usuarios Moderadores', modelo: ::Kpi::Clases.contenido_extern, scopes: [:autor_admin, :ultima_semana] },
         { texto: 'Contenidos publicados por usuarios Expertos', modelo: ::Kpi::Clases.contenido_extern, scopes: [:autor_experto, :ultima_semana] },
