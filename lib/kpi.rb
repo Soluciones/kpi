@@ -69,5 +69,6 @@ module Kpi
 
   module Personalizacion
     mattr_accessor :array_foros
+    self.array_foros = []
   end
 end
