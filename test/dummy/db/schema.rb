@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140409170600) do
+ActiveRecord::Schema.define(:version => 20140410123444) do
 
   create_table "contenidos", :force => true do |t|
     t.string   "titulo"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(:version => 20140409170600) do
     t.boolean  "publicado"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "inicial_id"
+    t.integer  "blog_id"
   end
 
   create_table "estadisticas", :force => true do |t|
