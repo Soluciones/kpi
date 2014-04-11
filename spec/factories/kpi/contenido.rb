@@ -1,7 +1,7 @@
 # coding: UTF-8
 
 FactoryGirl.define do
-  factory :contenido, class: 'Contenido' do
+  factory :contenido, class: ::Kpi::Clases.contenido_extern do
     association     :usuario
     subtipo_id      { Random.rand(1..10) }
     publicado       true

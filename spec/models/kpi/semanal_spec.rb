@@ -32,25 +32,26 @@ describe Kpi::Semanal do
   end
 
   describe ".calcula_ultima_semana" do
+    include Kpi::Clases
+
     let(:config) { { 'Total usuarios' => [
-      { texto: 'Usuarios Activados', modelo: Kpi::USUARIO, scopes: [:activados] },
-      { texto: 'Usuarios sin Activar', modelo: Kpi::USUARIO, scopes: [:sin_activar] }
+      { texto: 'Usuarios Activados', modelo: usuario_extern, scopes: [:activados] },
+      { texto: 'Usuarios sin Activar', modelo: usuario_extern, scopes: [:sin_activar] }
       ],
       'Aumento de usuarios en la semana' => [
-        { texto: 'Usuarios sin Activar en la semana', modelo: Kpi::USUARIO, scopes: [:sin_activar, :ultima_semana] }
+        { texto: 'Usuarios sin Activar en la semana', modelo: usuario_extern, scopes: [:sin_activar, :ultima_semana] }
       ]} }
 
     before do
-      stub_const("Kpi::CONFIGURACION", config)
-      stub_const("Kpi::MODELOS_Y_SCOPES", config.values.flatten)
+      Kpi.stub(configuracion: config)
     end
 
     it "debe buscar los datos y guardarlos" do
-      Usuario.stub_chain(:activados, :count).and_return(22)
-      Usuario.stub_chain(:sin_activar, :count).and_return(3)
-      Usuario.stub_chain(:sin_activar, :ultima_semana, :count).and_return(2)
+      usuario_class.stub_chain(:activados, :count).and_return(22)
+      usuario_class.stub_chain(:sin_activar, :count).and_return(3)
+      usuario_class.stub_chain(:sin_activar, :ultima_semana, :count).and_return(2)
       described_class.calcula_ultima_semana
-      ultimo_dato_de_usuarios = Kpi::Semanal.where(anyo: Time.now.year, semana: Date.yesterday.cweek, modelo: 'Usuario')
+      ultimo_dato_de_usuarios = Kpi::Semanal.where(anyo: Time.now.year, semana: Date.yesterday.cweek, modelo: usuario_extern)
       usuarios_activados = ultimo_dato_de_usuarios.where(scope: [:activados].to_s)
       usuarios_activados.count.should == 1
       usuarios_activados.first.dato == 22

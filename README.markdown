@@ -35,18 +35,23 @@ Luego, habrá que importar las migraciones a la app principal que vaya a usar el
 
 ### En la app:
 
-En usuario.rb, se añaden los scopes que el modelo proporciona con una línea:
+En usuario.rb y demás modelos con KPIs, se añaden los scopes que el modelo proporciona con una línea:
 `  include Kpi::UsuarioKpi`
 
-Y lo mismo para el resto de modelos afectados.
+Lo mismo para el resto de modelos afectados.
 Puede consultarse con un comando todos los modelos a los que se les va a añadir scopes:
 
-    > Kpi::MODELOS_AFECTADOS
+    > Kpi::modelos_afectados
+
+`config/initializers/engines.rb`: Aquí se le pasan las clases externas que el engine necesita, en formato `Kpi::Clases.xxx_extern = 'Xxx'`
 
 
 ### En el engine:
 
 Dummy necesitará tener creados los modelos afectados, con sus correspondientes tablas
+
+`lib/kpi.rb`: Aquí metemos las clases externas con las que vamos a interactuar.
+En las clases y tests que lleven un `include Kpi::Clases`, la clase estará disponible como `xxx_class`; para el resto, con `::Kpi::Clases.xxx_extern.constantize` (y su nombre, con `::Kpi::Clases.xxx_extern`)
 
 
 ### Configurar para que use la working copy local

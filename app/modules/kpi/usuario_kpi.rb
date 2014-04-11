@@ -20,11 +20,11 @@ module Kpi::UsuarioKpi
     scope :sin_activar, -> { where(estado_id: ESTADO_USUARIO_SIN_ACTIVAR) }
 
     def self.ids_de_expertos
-      Tematica::Tematizacion.where(tematizable_type: 'Usuario', tematizable_grupo: EXPERTO).pluck(:tematizable_id)
+      ::Kpi::Clases.tematizacion_extern.constantize.where(tematizable_type: ::Kpi::Clases.usuario_extern, tematizable_grupo: EXPERTO).pluck(:tematizable_id)
     end
 
     def self.ids_de_admins
-      self.where('estado_id >= ?', Usuario::ESTADO_USUARIO_ADMIN).pluck(:id)
+      self.where('estado_id >= ?', ESTADO_USUARIO_ADMIN).pluck(:id)
     end
   end
 end

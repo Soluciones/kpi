@@ -10,17 +10,17 @@ describe Usuario do
 
     context "en la última semana" do
       it "filtra los activados" do
-        nombres = Usuario.activados.ultima_semana.map(&:nick)
+        nombres = ::Kpi::Clases.usuario_extern.constantize.activados.ultima_semana.map(&:nick)
         nombres.should == [activado.nick]
       end
 
       it "filtra los sin_activar" do
-        nombres = Usuario.sin_activar.ultima_semana.map(&:nick)
+        nombres = ::Kpi::Clases.usuario_extern.constantize.sin_activar.ultima_semana.map(&:nick)
         nombres.should == [sin_activar.nick]
       end
 
       it "filtra todos" do
-        nombres = Usuario.todos.ultima_semana.map(&:nick)
+        nombres = ::Kpi::Clases.usuario_extern.constantize.todos.ultima_semana.map(&:nick)
         nombres.length.should == 2
         nombres.should include(activado.nick)
         nombres.should include(sin_activar.nick)
@@ -29,19 +29,19 @@ describe Usuario do
 
     context "totales" do
       it "filtra los activados" do
-        nombres = Usuario.activados.map(&:nick)
+        nombres = ::Kpi::Clases.usuario_extern.constantize.activados.map(&:nick)
         nombres.length.should == 2
         nombres.should include(activado.nick)
         nombres.should include(antiguo.nick)
       end
 
       it "filtra los sin_activar" do
-        nombres = Usuario.sin_activar.map(&:nick)
+        nombres = ::Kpi::Clases.usuario_extern.constantize.sin_activar.map(&:nick)
         nombres.should == [sin_activar.nick]
       end
 
       it "filtra todos" do
-        Usuario.todos.count.should == 3
+        ::Kpi::Clases.usuario_extern.constantize.todos.count.should == 3
       end
     end
   end

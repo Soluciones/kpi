@@ -14,7 +14,7 @@ module Kpi
     def self.calcula_ultima_semana
       ultima_semana = dia_de_referencia.cweek
       self.where(anyo: dia_de_referencia.year, semana: ultima_semana).delete_all
-      Kpi::MODELOS_Y_SCOPES.each do |modelo_y_scope|
+      Kpi::modelos_y_scopes.each do |modelo_y_scope|
         dato = encadena_modelo_y_scopes(modelo_y_scope).count
         self.create(anyo: dia_de_referencia.year, semana: ultima_semana, modelo: modelo_y_scope[:modelo], scope: modelo_y_scope[:scopes].to_s, dato: dato)
       end
