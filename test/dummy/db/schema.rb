@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140407081316) do
+ActiveRecord::Schema.define(:version => 20140410123444) do
 
   create_table "contenidos", :force => true do |t|
     t.string   "titulo"
@@ -21,7 +21,18 @@ ActiveRecord::Schema.define(:version => 20140407081316) do
     t.boolean  "publicado"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "inicial_id"
+    t.integer  "blog_id"
   end
+
+  create_table "estadisticas", :force => true do |t|
+    t.integer  "usuario_id"
+    t.integer  "subtipo_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "estadisticas", ["usuario_id", "subtipo_id"], :name => "index_estadisticas_on_usuario_id_and_subtipo_id", :unique => true
 
   create_table "kpi_semanales", :force => true do |t|
     t.integer  "anyo"
