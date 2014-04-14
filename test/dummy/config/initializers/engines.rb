@@ -1,5 +1,4 @@
 # coding: UTF-8
-  CLASES = %w(usuario tematizacion suscripcion contenido estadistica)
 
 Kpi::Clases.usuario_extern = 'Usuario'
 Kpi::Clases.tematizacion_extern = 'Tematica::Tematizacion'
