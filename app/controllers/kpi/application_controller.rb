@@ -1,4 +1,3 @@
-module Kpi
-  class ApplicationController < ActionController::Base
-  end
+# esto permite el render de las vistas usando el layout de main app
+class Kpi::ApplicationController < ApplicationController
 end
