@@ -1,5 +1,7 @@
 # Engine kpi
 
+[![Build Status](https://travis-ci.org/Soluciones/kpi.svg?branch=master)](https://travis-ci.org/Soluciones/kpi)
+
 ## Lanzar a mano el cálculo de la última semana:
 
     > Kpi::Semanal.calcula_ultima_semana
