@@ -1,5 +1,3 @@
-# coding: UTF-8
-
 require 'spec_helper'
 
 describe Contenido do
@@ -26,38 +24,38 @@ describe Contenido do
     context "en la última semana" do
       it "filtra los mensajes de admin" do
         mensajes = clase_contenido.autor_admin.ultima_semana
-        mensajes.should have(1).mensaje
-        mensajes.map(&:usuario_id).should == [nuestro_guru.id]
+        expect(mensajes.size).to eq(1)
+        expect(mensajes.map(&:usuario_id)).to eq([nuestro_guru.id])
       end
 
       it "filtra los mensajes de no admin" do
         mensajes = clase_contenido.autor_no_admin.ultima_semana
-        mensajes.should have(5).mensajes
-        mensajes.map(&:usuario_id).should_not include(nuestro_guru.id)
+        expect(mensajes.size).to eq(5)
+        expect(mensajes.map(&:usuario_id)).not_to include(nuestro_guru.id)
       end
 
       it "filtra los mensajes de usuarios normales (No Admin ni Experto)" do
         mensajes = clase_contenido.autor_ni_admin_ni_experto.ultima_semana
-        mensajes.should have(2).mensajes
-        mensajes.map(&:usuario_id).uniq.should == [un_forero.id]
+        expect(mensajes.size).to eq(2)
+        expect(mensajes.map(&:usuario_id).uniq).to eq([un_forero.id])
       end
 
       it "cuenta el total de autores" do
-        clase_contenido.autores.ultima_semana.count.should == 3
+        expect(clase_contenido.autores.ultima_semana.count).to eq(3)
       end
     end
 
     context "totales" do
       it "filtra los mensajes de admin" do
         mensajes = clase_contenido.autor_admin
-        mensajes.should have(2).mensajes
-        mensajes.map(&:usuario_id).uniq.should == [nuestro_guru.id]
+        expect(mensajes.size).to eq(2)
+        expect(mensajes.map(&:usuario_id).uniq).to eq([nuestro_guru.id])
       end
 
       it "filtra los mensajes de expertos" do
         mensajes = clase_contenido.autor_experto.all
-        mensajes.should have(3).mensajes
-        mensajes.map(&:usuario_id).uniq.should == [un_guru_externo.id]
+        expect(mensajes.size).to eq(3)
+        expect(mensajes.map(&:usuario_id).uniq).to eq([un_guru_externo.id])
       end
     end
   end
@@ -78,21 +76,21 @@ describe Contenido do
       end
 
       it "todos" do
-        clase_contenido.en_foros.count.should == 5
-        clase_contenido.en_foros.ultima_semana.count.should == 4
+        expect(clase_contenido.en_foros.count).to eq(5)
+        expect(clase_contenido.en_foros.ultima_semana.count).to eq(4)
       end
 
       it "sólo de admins" do
-        clase_contenido.en_foros.autor_admin.count.should == 2
+        expect(clase_contenido.en_foros.autor_admin.count).to eq(2)
       end
 
       it "sólo nuevos hilos" do
-        clase_contenido.hilos.count.should == 3
-        clase_contenido.hilos.ultima_semana.count.should == 2
+        expect(clase_contenido.hilos.count).to eq(3)
+        expect(clase_contenido.hilos.ultima_semana.count).to eq(2)
       end
 
       it "sólo respuestas" do
-        clase_contenido.respuestas.count.should == 2
+        expect(clase_contenido.respuestas.count).to eq(2)
       end
     end
 
@@ -111,21 +109,21 @@ describe Contenido do
       end
 
       it "todos" do
-        clase_contenido.en_blogs.count.should == 5
-        clase_contenido.en_blogs.ultima_semana.count.should == 4
+        expect(clase_contenido.en_blogs.count).to eq(5)
+        expect(clase_contenido.en_blogs.ultima_semana.count).to eq(4)
       end
 
       it "sólo de admins" do
-        clase_contenido.en_blogs.autor_admin.count.should == 2
+        expect(clase_contenido.en_blogs.autor_admin.count).to eq(2)
       end
 
       it "sólo posts" do
-        clase_contenido.posts.count.should == 3
-        clase_contenido.posts.ultima_semana.count.should == 2
+        expect(clase_contenido.posts.count).to eq(3)
+        expect(clase_contenido.posts.ultima_semana.count).to eq(2)
       end
 
       it "sólo respuestas" do
-        clase_contenido.comentarios_a_posts.count.should == 2
+        expect(clase_contenido.comentarios_a_posts.count).to eq(2)
       end
     end
   end

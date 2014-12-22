@@ -1,5 +1,3 @@
-# coding: UTF-8
-
 require 'spec_helper'
 
 describe 'Estadistica' do
@@ -13,8 +11,8 @@ describe 'Estadistica' do
       FactoryGirl.create(:estadistica, usuario_id: id_usuario_antiguo, created_at: 1.year.ago, subtipo_id: Random.rand(6..10))
     end
 
-    it "debe identificar como nuevo al que tiene estadísticas recientes y no tiene estadísticas antiguas" do
-      ::Kpi::Clases.estadistica_extern.constantize.primera_participacion_del_usuario.ultima_semana.map(&:usuario_id).should == [id_usuario_nuevo]
+    it 'debe identificar como nuevo al que tiene estadísticas recientes y no tiene estadísticas antiguas' do
+      expect(::Kpi::Clases.estadistica_extern.constantize.primera_participacion_del_usuario.ultima_semana.map(&:usuario_id)).to eq([id_usuario_nuevo])
     end
   end
 end
