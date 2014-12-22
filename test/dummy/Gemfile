@@ -1,17 +1,15 @@
-# coding: UTF-8
-
 source 'https://rubygems.org'
 
-ruby '1.9.3'
+ruby '2.1.2'
 
-gem 'rails', '3.1.12'   # Si se cambia -> bundle update rails
-gem 'mysql2'
+gem 'rails', branch: '4-1-stable'   # Si se cambia -> bundle update rails
+gem 'pg'
 
-gem 'tematica', git: 'git@github.com:Soluciones/tematica.git', branch: 'master', tag: '0.0.3'
+gem 'tematica', git: 'git@github.com:Soluciones/tematica.git', tag: '4.0.0'
 
 gem 'haml-rails'
 group :assets do
-  gem 'sass-rails', " ~> 3.1.0"
+  gem 'sass-rails', " ~> 4.0.0"
 end
 
 
