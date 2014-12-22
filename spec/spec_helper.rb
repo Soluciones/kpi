@@ -1,10 +1,7 @@
-# coding: UTF-8
-
 ENV['RAILS_ENV'] ||= 'test'
 
 require File.expand_path('../../test/dummy/config/environment', __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
 require 'ffaker'
 require 'factory_girl_rails'
 require 'database_cleaner'
@@ -17,6 +14,7 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 RSpec.configure do |config|
   config.mock_with :rspec
 
+  load "#{Rails.root}/db/seeds.rb"
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -38,7 +36,7 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with :truncation, except: %w(paises provincias subtipos tipo_productos constantes likerts pagestaticas usuarios permisos tematicas)
+    DatabaseCleaner.clean_with :truncation, except: %w(paises provincias subtipos tipo_productos constantes likerts pagestaticas usuarios permisos tematica_tematicas)
   end
 
   config.before(:each) do
