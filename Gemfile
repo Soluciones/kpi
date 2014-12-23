@@ -1,5 +1,7 @@
 source "http://rubygems.org"
 
+ruby '2.1.2'
+
 # Declare your gem's dependencies in kpi.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
@@ -7,7 +9,7 @@ gemspec
 
 gem 'haml-rails'
 
-gem 'tematica', git: 'https://github.com/Soluciones/tematica.git', tag: '0.0.3'
+gem 'tematica', git: 'https://github.com/Soluciones/tematica.git', tag: '4.0.0'
 
 # jquery-rails is used by the dummy application
 # gem "jquery-rails"

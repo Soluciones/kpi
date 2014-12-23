@@ -1,5 +1,3 @@
-# coding: UTF-8
-
 module Kpi
   class Semanal < ActiveRecord::Base
     validates :semana, uniqueness: { scope: [:anyo, :modelo, :scope] }
@@ -15,7 +13,7 @@ module Kpi
       ultima_semana = dia_de_referencia.cweek
       self.where(anyo: dia_de_referencia.year, semana: ultima_semana).delete_all
       Kpi::modelos_y_scopes.each do |modelo_y_scope|
-        dato = encadena_modelo_y_scopes(modelo_y_scope).count
+        dato = encadena_modelo_y_scopes(modelo_y_scope).size
         self.create(anyo: dia_de_referencia.year, semana: ultima_semana, modelo: modelo_y_scope[:modelo], scope: modelo_y_scope[:scopes].to_s, dato: dato)
       end
     end

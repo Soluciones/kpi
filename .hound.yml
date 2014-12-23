@@ -3,9 +3,21 @@ LineLength:
   Max: 120
   Exclude:
     - app/views/**/*
+    - test/dummy/db/seeds.rb
+    - test/dummy/db/seeds/*
+
+StringLiterals:
+  EnforcedStyle: single_quotes
+
+HashSyntax:
+  EnforcedStyle: ruby19
 
 SignalException:
   EnforcedStyle: only_raise
 
 DotPosition:
   EnforcedStyle: leading
+
+AllCops:
+  Exclude:
+    - test/dummy/db/schema.rb
