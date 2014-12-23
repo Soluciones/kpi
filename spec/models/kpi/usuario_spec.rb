@@ -9,17 +9,17 @@ describe Usuario do
 
     context "en la última semana" do
       it "filtra los activados" do
-        nombres = usuario_class.activados.ultima_semana.map(&:nick)
+        nombres = usuario_class.activados.ultima_semana.pluck(:nick)
         expect(nombres).to eq([activado.nick])
       end
 
       it "filtra los sin_activar" do
-        nombres = usuario_class.sin_activar.ultima_semana.map(&:nick)
+        nombres = usuario_class.sin_activar.ultima_semana.pluck(:nick)
         expect(nombres).to eq([sin_activar.nick])
       end
 
       it "filtra todos" do
-        nombres = usuario_class.todos.ultima_semana.map(&:nick)
+        nombres = usuario_class.todos.ultima_semana.pluck(:nick)
         expect(nombres.length).to eq(2)
         expect(nombres).to include(activado.nick)
         expect(nombres).to include(sin_activar.nick)
@@ -28,14 +28,14 @@ describe Usuario do
 
     context "totales" do
       it "filtra los activados" do
-        nombres = usuario_class.activados.map(&:nick)
+        nombres = usuario_class.activados.pluck(:nick)
         expect(nombres.length).to eq(2)
         expect(nombres).to include(activado.nick)
         expect(nombres).to include(antiguo.nick)
       end
 
       it "filtra los sin_activar" do
-        nombres = usuario_class.sin_activar.map(&:nick)
+        nombres = usuario_class.sin_activar.pluck(:nick)
         expect(nombres).to include(sin_activar.nick)
       end
 
