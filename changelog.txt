@@ -1,1 +1,2 @@
+[1.0.0] Updated gems, use postgres db
 [0.0.1] Creado
