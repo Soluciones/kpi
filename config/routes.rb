@@ -1,3 +1,3 @@
 Kpi::Engine.routes.draw do
-  resources :semanal
+  resources :semanal, only: [:index]
 end
