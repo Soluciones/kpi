@@ -2,6 +2,10 @@ module Kpi
   class Semanal < ActiveRecord::Base
     validates :semana, uniqueness: { scope: [:anyo, :modelo, :scope] }
 
+    TIPOS = { 'totales' => 'Datos totales de usuarios', 'usuarios' => 'Aumento de usuarios en la semana',
+              'autores' => 'Autores', 'contenidos' => 'Contenidos en la semana (todos los tipos)',
+              'foros' => 'Foros', 'blogs' => 'Blogs' }
+
     def self.dame_ultimas_n_semanas(n_semanas)
       semana_mas_antigua = dia_de_referencia.cweek - n_semanas + 1
       semana_mas_reciente = dia_de_referencia.cweek
