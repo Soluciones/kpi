@@ -10,7 +10,7 @@ module Kpi
     contenido = ::Kpi::Clases.contenido_extern
     estadistica = ::Kpi::Clases.estadistica_extern
 
-    { Kpi::Semanal::TIPOS['totales'] => [
+    { Kpi::Semanal::TIPOS[:totales] => [
       { texto: 'Usuarios Registrados',
         modelo: usuario,
         scopes: [:todos] },
@@ -21,7 +21,7 @@ module Kpi
         modelo: usuario,
         scopes: [:sin_activar] }
     ],
-      Kpi::Semanal::TIPOS['usuarios'] => [
+      Kpi::Semanal::TIPOS[:usuarios] => [
         { texto: 'Usuarios Registrados en la semana',
           modelo: usuario,
           scopes: [:todos, :ultima_semana] },
@@ -32,7 +32,7 @@ module Kpi
           modelo: usuario,
           scopes: [:sin_activar, :ultima_semana] }
       ],
-      Kpi::Semanal::TIPOS['autores'] => [
+      Kpi::Semanal::TIPOS[:autores] => [
         { texto: 'Autores Moderadores',
           modelo: contenido,
           scopes: [:autores, :autor_admin, :ultima_semana] },
@@ -49,7 +49,7 @@ module Kpi
           modelo: estadistica,
           scopes: [:primera_participacion_del_usuario, :ultima_semana] }
       ],
-      Kpi::Semanal::TIPOS['contenidos'] => [
+      Kpi::Semanal::TIPOS[:contenidos] => [
         { texto: 'Contenidos publicados por usuarios Moderadores',
           modelo: contenido,
           scopes: [:autor_admin, :ultima_semana] },
@@ -63,7 +63,7 @@ module Kpi
           modelo: contenido,
           scopes: [:ultima_semana] }
       ],
-      Kpi::Semanal::TIPOS['foros'] => [
+      Kpi::Semanal::TIPOS[:foros] => [
         { texto: 'Hilos publicados por usuarios Moderadores',
           modelo: contenido,
           scopes: [:autor_admin, :ultima_semana, :hilos] },
@@ -95,7 +95,7 @@ module Kpi
           modelo: contenido,
           scopes: [:ultima_semana, :en_foros] }
       ],
-      Kpi::Semanal::TIPOS['blogs'] => [
+      Kpi::Semanal::TIPOS[:blogs] => [
         { texto: 'Posts publicados por Moderadores',
           modelo: contenido,
           scopes: [:autor_admin, :ultima_semana, :posts] },
