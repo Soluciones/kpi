@@ -1,3 +1,3 @@
 Kpi::Engine.routes.draw do
-  get 'semanal/:tipo' => 'semanal#index'
+  get 'semanal(/:tipo)' => 'semanal#index'
 end

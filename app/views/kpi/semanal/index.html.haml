@@ -1,5 +1,5 @@
 - Kpi::configuracion.each_key do |bloque|
-  - if @tipo == bloque
+  - if @tipo == bloque || @tipo.blank?
     %h3= bloque
 
     %table.ranking

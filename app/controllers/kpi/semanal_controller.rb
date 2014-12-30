@@ -5,7 +5,7 @@ module Kpi
     def index
       n_semanas_que_quiero_ver = 5
 
-      @tipo = Kpi::Semanal::TIPOS[params[:tipo].to_sym]
+      @tipo = Kpi::Semanal::TIPOS[params[:tipo].to_sym] if params[:tipo].present?
       @semanas = Kpi::Semanal.dame_ultimas_n_semanas(n_semanas_que_quiero_ver)
       @kpi_semanales = Kpi::Semanal.where(anyo: Date.yesterday.year, semana: @semanas)
     end
