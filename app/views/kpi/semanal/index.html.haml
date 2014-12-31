@@ -2,6 +2,7 @@
   - if @tipo == bloque || @tipo.blank?
     %h3= bloque
 
+    %span.enlace_volver= link_to '<< Volver a Control', :back if @tipo.present?
     %table.ranking
       %tr
         %th
