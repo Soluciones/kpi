@@ -2,8 +2,8 @@
   - if @tipo == bloque || @tipo.blank?
     %h3= bloque
 
-    %span.enlace_volver= link_to '<< Volver a Control', :back if @tipo.present?
-    %table.ranking
+    %span.enlace-volver-control= link_to '<< Volver a la zona de control', :back if @tipo.present?
+    %table.table
       %tr
         %th
         - @semanas.reverse_each do |semana|
