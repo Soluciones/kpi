@@ -1,6 +1,7 @@
 # Engine kpi
 
-[![Build Status](https://travis-ci.org/Soluciones/kpi.svg?branch=master)](https://travis-ci.org/Soluciones/kpi)
+[![Build Status](https://travis-ci.org/Soluciones/kpi.svg)](https://travis-ci.org/Soluciones/kpi)
+[![Code Climate](https://codeclimate.com/github/Soluciones/kpi.png)](https://codeclimate.com/github/Soluciones/kpi)
 
 ## Lanzar a mano el cálculo de la última semana:
 
