@@ -6,7 +6,7 @@ FactoryGirl.define do
     subtipo_id      { Random.rand(1..10) }
     publicado       true
     tema            { |c| c.subtipo_id }
-    titulo          { Faker::Lorem.sentence }
+    titulo          { FFaker::Lorem.sentence }
 
     trait :mensaje_inicial do
       after(:create) do |hilo, evaluator|

@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :tematizacion, class: ::Kpi::Clases.tematizacion_extern do
-    tematizable_type  { Faker::Lorem.word }
-    tematizable_grupo { Faker::Lorem.word }
+    tematizable_type  { FFaker::Lorem.word }
+    tematizable_grupo { FFaker::Lorem.word }
     tematica          { Tematica::Tematica.all.to_a.sample }
 
     factory :tematizacion_usuario_experto do
