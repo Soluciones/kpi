@@ -7,7 +7,7 @@ gem 'pg'
 
 gem 'tematica', git: 'git@github.com:Soluciones/tematica.git', tag: '4.0.0'
 
-gem 'haml-rails'
+gem 'hamlit-rails'
 group :assets do
   gem 'sass-rails', " ~> 4.0.0"
 end

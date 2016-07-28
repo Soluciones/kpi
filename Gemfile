@@ -7,7 +7,7 @@ ruby '2.1.2'
 # development dependencies will be added by default to the :development group.
 gemspec
 
-gem 'haml-rails'
+gem 'hamlit-rails'
 
 gem 'tematica', git: 'https://github.com/Soluciones/tematica.git', branch: 'upgrade-rails'
 
